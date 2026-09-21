@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Сообщество ТЕОРА — Уровни участия</title>
+  <meta name="description" content="Пять уровней участия в Сообществе ТЕОРА: от знакомства с пространством — к присутствию, проявлению, встрече с Другим и сотворчеству. Не выше — глубже." />
+  <meta name="theme-color" content="#120c18" />
+  <link rel="canonical" href="https://teora.community/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Сообщество ТЕОРА — Пять уровней участия" />
+  <meta property="og:description" content="Пять способов быть частью живого Сообщества. Не выше — глубже." />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:image" content="/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+
+  <!-- JSON-LD для SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Сообщество ТЕОРА",
+    "description": "Сообщество с пятью уровнями участия: Знакомство, Присутствие, Проявление, Я и Другой, Сотворчество.",
+    "url": "https://teora.community/"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Фоновое расширяющееся пространство -->
+  <div class="ambient" aria-hidden="true">
+    <span class="ambient-ring r1"></span>
+    <span class="ambient-ring r2"></span>
+    <span class="ambient-ring r3"></span>
+  </div>
+
+  <!-- Навигация -->
+  <header class="nav" id="top">
+    <a href="#top" class="nav__brand">ТЕОРА</a>
+    <nav class="nav__links" aria-label="Основная навигация">
+      <a href="#map">Уровни</a>
+      <a href="#compare">Сравнение</a>
+      <a href="#choose">Где я сейчас</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <a href="#join" class="btn btn--ghost nav__cta" data-cta="nav-join">Присоединиться</a>
+  </header>
+
+  <main>
+
+    <!-- 1. Первый экран -->
+    <section class="hero" id="hero">
+      <p class="hero__eyebrow">Сообщество ТЕОРА</p>
+      <h1 class="hero__title">Пять уровней участия</h1>
+      <p class="hero__subtitle">
+        От первого знакомства с пространством — к присутствию, проявлению,
+        встрече с Другим и сотворчеству.
+      </p>
+
+      <ol class="flow" id="flow" aria-label="Путь участия"></ol>
+
+      <div class="hero__actions">
+        <a href="#map" class="btn btn--primary" data-cta="hero-explore">Исследовать уровни</a>
+        <a href="#join" class="btn btn--ghost" data-cta="hero-join">Присоединиться</a>
+      </div>
+
+      <p class="hero__whisper">Не выше. Глубже.</p>
+    </section>
+
+    <!-- 2. Интерактивная карта уровней -->
+    <section class="map-section" id="map">
+      <div class="section-head">
+        <h2>Карта участия</h2>
+        <p>Пять уровней — не ступени вверх, а расширение пространства вокруг человека.
+           Наведите или коснитесь, чтобы рассмотреть уровень.</p>
+      </div>
+
+      <div class="map">
+        <div class="map__rings" id="rings" role="group" aria-label="Кольца уровней">
+          <div class="map__center">Я</div>
+        </div>
+        <div class="map__legend" id="mapLegend"></div>
+      </div>
+    </section>
+
+    <!-- 3. Переходный смысловой блок -->
+    <section class="bridge">
+      <h2>От присутствия к сотворчеству</h2>
+      <div class="bridge__text">
+        <p>В Сообществе ТЕОРА человек выбирает ту глубину участия, которая соответствует его внутренней готовности.</p>
+        <p>Можно находиться рядом, наблюдать и знакомиться. Можно стать постоянным участником пространства. Можно начать проявлять собственную индивидуальность. Можно исследовать себя во встрече с Другим. А со временем — стать одним из тех, кто участвует в создании самого пространства.</p>
+        <p class="bridge__accent">Каждый следующий уровень не отменяет предыдущий, а включает его в себя.</p>
+      </div>
+    </section>
+
+    <!-- 4. Подробные уровни (генерируются из конфига) -->
+    <section class="levels" id="levels" aria-label="Описание уровней"></section>
+
+    <!-- Сотворчество — особое пространство (без цены) -->
+    <section class="cocreation" id="cocreation">
+      <div class="cocreation__inner">
+        <p class="cocreation__eyebrow">Особое пространство</p>
+        <h2>Сотворчество</h2>
+        <p class="cocreation__idea">«Я участвую в создании пространства».</p>
+        <div class="cocreation__body">
+          <p>Здесь меняется сама позиция участника — от вопроса «что я могу получить здесь?» к вопросу «что может появиться здесь благодаря моему участию?».</p>
+          <p>Сотворчество предполагает готовность принимать ответственность за часть общего пространства: создавать инициативы и события, развивать новые форматы, создавать контент, проводить встречи, участвовать в проектах, помогать другим участникам и развивать само Сообщество.</p>
+          <p class="cocreation__note">Это не VIP-уровень и не вершина. Это другая степень ответственности за общее пространство — индивидуальный путь с индивидуальным подходом, поэтому у него нет фиксированной цены.</p>
+        </div>
+        <a href="#join" class="btn btn--primary" data-cta="cocreation-apply">Подать заявку</a>
+      </div>
+    </section>
+
+    <!-- 5. Сравнение уровней -->
+    <section class="compare" id="compare">
+      <div class="section-head">
+        <h2>Сравнение уровней</h2>
+        <p>Возможности накапливаются: каждый уровень включает в себя предыдущий.</p>
+      </div>
+      <div class="compare__scroll">
+        <table class="compare__table" id="compareTable"></table>
+      </div>
+    </section>
+
+    <!-- 6. Где я сейчас -->
+    <section class="choose" id="choose">
+      <div class="section-head">
+        <h2>Где я сейчас?</h2>
+        <p>Узнайте себя в одном из вариантов участия.</p>
+      </div>
+      <div class="choose__list" id="chooseList"></div>
+    </section>
+
+    <!-- 7. Уровень — не статус -->
+    <section class="status">
+      <div class="status__card">
+        <h2>Уровень — не статус</h2>
+        <p>Уровни ТЕОРА не определяют ценность человека и не являются оценкой его развития. Они показывают только ту глубину взаимодействия с Сообществом, которая сейчас ему необходима и к которой он готов.</p>
+        <p>Можно оставаться на выбранном уровне столько, сколько это имеет смысл. Переход происходит не ради достижения следующей ступени, а тогда, когда появляется естественная потребность в другой глубине участия.</p>
+      </div>
+    </section>
+
+    <!-- 8. Стоимость / вступление -->
+    <section class="pricing" id="join">
+      <div class="section-head">
+        <h2>Выбрать уровень участия</h2>
+        <p>Найдите ту глубину, которая нужна вам сейчас.</p>
+      </div>
+      <div class="pricing__grid" id="pricingGrid"></div>
+      <p class="pricing__foot">
+        Готовы к Сотворчеству? Это отдельный, индивидуальный путь —
+        <a href="#cocreation">узнайте о нём</a> или напишите нам.
+      </p>
+    </section>
+
+    <!-- 9. FAQ -->
+    <section class="faq" id="faq">
+      <div class="section-head">
+        <h2>Частые вопросы</h2>
+      </div>
+      <div class="faq__list" id="faqList"></div>
+    </section>
+
+    <!-- 10. Финальный экран -->
+    <section class="final" id="final">
+      <div class="final__words" id="finalWords" aria-hidden="true"></div>
+      <h2 class="final__title">Найдите своё место в&nbsp;Сообществе ТЕОРА</h2>
+      <p class="final__subtitle">Не нужно стремиться к последнему уровню. Важно найти ту глубину участия, которая нужна вам сейчас.</p>
+      <a href="#join" class="btn btn--primary btn--lg" data-cta="final-join">Присоединиться к ТЕОРА</a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="footer__logo">ТЕОРА</span>
+        <p>Пять способов быть частью живого Сообщества.</p>
+      </div>
+      <nav class="footer__links" aria-label="Правовая информация">
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="#faq">Вопросы</a>
+        <a href="#join">Присоединиться</a>
+      </nav>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> Сообщество ТЕОРА</p>
+  </footer>
+
+  <!-- Cookie consent -->
+  <div class="cookie" id="cookie" role="dialog" aria-live="polite" aria-label="Согласие на использование cookie" hidden>
+    <p>Мы используем cookie, чтобы страница работала корректно и чтобы понимать, какие уровни вам интересны. Подробнее — в <a href="/datenschutz.html">Datenschutz</a>.</p>
+    <div class="cookie__actions">
+      <button class="btn btn--ghost btn--sm" id="cookieDecline">Только необходимые</button>
+      <button class="btn btn--primary btn--sm" id="cookieAccept">Принять</button>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
