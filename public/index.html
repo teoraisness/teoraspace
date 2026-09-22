@@ -17,9 +17,7 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/fonts.css" />
   <link rel="stylesheet" href="/styles.css" />
 
   <!-- JSON-LD для SEO -->
@@ -58,28 +56,44 @@
 
     <!-- 1. Первый экран -->
     <section class="hero" id="hero">
-      <p class="hero__eyebrow">Сообщество ТЕОРА</p>
-      <h1 class="hero__title">Пять уровней участия</h1>
-      <p class="hero__subtitle">
-        От первого знакомства с пространством — к присутствию, проявлению,
-        встрече с Другим и сотворчеству.
-      </p>
+      <img class="hero__img" src="/hero-bg.jpg" alt="Космический пейзаж: планета, луч света с пятью точками, горы и отражение в воде" />
+      <canvas class="stars" id="stars" aria-hidden="true"></canvas>
+      <div class="hero__scrim"></div>
 
-      <ol class="flow" id="flow" aria-label="Путь участия"></ol>
-
-      <div class="hero__actions">
-        <a href="#map" class="btn btn--primary" data-cta="hero-explore">Исследовать уровни</a>
-        <a href="#join" class="btn btn--ghost" data-cta="hero-join">Присоединиться</a>
+      <!-- Цветные огоньки на точках луча (по цветам колец) -->
+      <div class="beamdots" aria-hidden="true">
+        <span class="beamdot" style="top:22.7%;--dc:var(--l1);"></span>
+        <span class="beamdot" style="top:32.4%;--dc:var(--l2);"></span>
+        <span class="beamdot" style="top:42.0%;--dc:var(--l3);"></span>
+        <span class="beamdot" style="top:50.4%;--dc:var(--l4);"></span>
+        <span class="beamdot" style="top:59.4%;--dc:var(--l5);"></span>
       </div>
 
-      <p class="hero__whisper">Не выше. Глубже.</p>
+      <!-- Названия уровней напротив точек — кликабельные якоря -->
+      <div class="marks">
+        <a class="mark" style="top:22.7%;--mc:var(--l1);" href="#level-znakomstvo" data-cta="hero-level-znakomstvo"><span class="mark__name">Знакомство</span></a>
+        <a class="mark" style="top:32.4%;--mc:var(--l2);" href="#level-prisutstvie" data-cta="hero-level-prisutstvie"><span class="mark__name">Присутствие</span></a>
+        <a class="mark" style="top:42.0%;--mc:var(--l3);" href="#level-proyavlenie" data-cta="hero-level-proyavlenie"><span class="mark__name">Проявление</span></a>
+        <a class="mark" style="top:50.4%;--mc:var(--l4);" href="#level-ya-i-drugoy" data-cta="hero-level-ya-i-drugoy"><span class="mark__name">Я и Другой</span></a>
+        <a class="mark" style="top:59.4%;--mc:var(--l5);" href="#cocreation" data-cta="hero-level-cocreation"><span class="mark__name">Сотворчество</span></a>
+      </div>
+
+      <div class="hero__copy">
+        <p class="hero__eyebrow">Сообщество Алунайи и Лувайи</p>
+        <h1 class="hero__title">Пространство встречи</h1>
+        <p class="hero__subtitle">От первого знакомства с пространством — к присутствию, проявлению, встрече с Другим и сотворчеству.</p>
+        <div class="hero__actions">
+          <a href="#map" class="btn btn--primary" data-cta="hero-explore">Исследовать уровни</a>
+          <a href="#join" class="btn btn--ghost" data-cta="hero-join">Присоединиться</a>
+        </div>
+      </div>
     </section>
 
     <!-- 2. Интерактивная карта уровней -->
     <section class="map-section" id="map">
       <div class="section-head">
         <h2>Карта участия</h2>
-        <p>Пять уровней — не ступени вверх, а расширение пространства вокруг человека.
+        <p>Пять уровней — это расширение мировосприятия сознания человека в его развитии.
            Наведите или коснитесь, чтобы рассмотреть уровень.</p>
       </div>
 

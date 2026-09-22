@@ -10,7 +10,7 @@
   --l2: #e88a4e; /* Присутствие — оранжевый    */
   --l3: #d0576b; /* Проявление — глубокий тёплый */
   --l4: #9b5fa8; /* Я и Другой — переход к фиолетовому */
-  --l5: #6a3e96; /* Сотворчество — глубокий фиолетовый */
+  --l5: #b98cd8; /* Сотворчество — светло-фиолетовый */
 
   /* База */
   --bg: #100b16;
@@ -147,69 +147,72 @@ section { padding: 72px 16px; max-width: var(--maxw); margin: 0 auto; }
 .section-head h2 { font-size: clamp(30px, 7vw, 46px); margin-bottom: 14px; }
 .section-head p { color: var(--muted); font-size: 17px; }
 
-/* ---------- Первый экран ---------- */
+/* ---------- Первый экран (полноэкранный, с фоновым изображением) ---------- */
 .hero {
-  min-height: 92vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 22px;
-  padding-top: 40px;
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: #05040a;
+  overflow: hidden;
+}
+.hero__img { display: block; width: 100%; height: auto; }
+.stars { position: absolute; inset: 0; z-index: 1; pointer-events: none; mix-blend-mode: screen; }
+.hero__scrim {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(5,4,10,.5) 0%, rgba(5,4,10,0) 22%, rgba(5,4,10,0) 58%, rgba(16,11,22,.5) 84%, var(--bg) 100%),
+    radial-gradient(120% 80% at 20% 90%, rgba(5,4,10,.72), transparent 60%);
+}
+
+/* Цветные огоньки на точках луча */
+.beamdots { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.beamdot {
+  position: absolute; left: 64.97%; transform: translate(-50%,-50%);
+  width: clamp(16px, 1.7vw, 26px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, #fff6ee 0%, var(--dc) 46%, var(--dc) 56%, transparent 74%);
+  box-shadow: 0 0 14px 3px var(--dc), 0 0 30px 10px color-mix(in srgb, var(--dc) 45%, transparent);
+}
+
+/* Названия уровней — кликабельные якоря справа от точек */
+.marks { position: absolute; inset: 0; z-index: 3; }
+.mark {
+  position: absolute; left: 66.4%; transform: translateY(-50%);
+  display: inline-block; text-decoration: none; cursor: pointer; border-radius: 6px;
+}
+.mark__name {
+  font-family: var(--font-sans); font-weight: 300;
+  font-size: clamp(12px, 1.35vw, 19px); letter-spacing: .8px; color: var(--text);
+  text-shadow: 0 2px 10px rgba(0,0,0,.92), 0 0 24px rgba(0,0,0,.8);
+  white-space: nowrap; display: inline-block;
+  transition: color .25s var(--ease), transform .25s var(--ease);
+}
+.mark:hover .mark__name, .mark:focus-visible .mark__name { color: var(--mc); transform: translateX(4px); }
+.mark:focus-visible { outline: 2px solid var(--mc); outline-offset: 5px; }
+
+/* Текстовый блок героя */
+.hero__copy {
+  position: absolute; left: 0; bottom: 0; z-index: 4;
+  padding: clamp(20px,4vw,60px) clamp(16px,4vw,56px) clamp(28px,5vw,66px);
+  max-width: min(620px, 88%); display: flex; flex-direction: column; gap: clamp(12px,1.7vw,18px);
 }
 .hero__eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 6px;
-  font-size: 13px;
-  color: var(--muted);
-  font-weight: 600;
+  text-transform: uppercase; letter-spacing: 5px; font-size: clamp(11px,1.3vw,14px);
+  font-weight: 600; color: var(--l1);
 }
 .hero__title {
-  font-size: clamp(44px, 12vw, 96px);
-  background: var(--spectrum);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  line-height: 1;
+  font-size: clamp(40px, 7vw, 78px); line-height: 1.0;
+  background: var(--spectrum); -webkit-background-clip: text; background-clip: text;
+  color: transparent; text-wrap: balance;
 }
-.hero__subtitle { max-width: 620px; font-size: clamp(17px, 4.4vw, 21px); color: var(--muted); }
+.hero__subtitle { font-size: clamp(16px, 2.1vw, 21px); color: var(--muted); line-height: 1.5; max-width: 560px; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
 
-.flow {
-  list-style: none;
-  margin: 8px 0 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 8px 6px;
-}
-.flow__item {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: var(--text);
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  background: rgba(244, 238, 233, 0.03);
-  opacity: 0;
-  transform: translateY(8px);
-  animation: rise 0.6s var(--ease) forwards;
-}
-.flow__dot { width: 9px; height: 9px; border-radius: 50%; }
-.flow__arrow { color: var(--muted-2); font-size: 14px; }
-@keyframes rise { to { opacity: 1; transform: translateY(0); } }
-
-.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px; }
-.hero__whisper {
-  margin-top: 18px;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 22px;
-  color: var(--muted);
+/* Мобильная раскладка героя: подписи убираем, текст под изображением */
+@media (max-width: 620px) {
+  .hero__copy { position: static; max-width: 100%; background: var(--bg); }
+  .mark { display: none; }
 }
 
 /* ---------- Карта колец ---------- */
