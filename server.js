@@ -33,11 +33,13 @@ function sendFile(res, filePath, status) {
       return;
     }
     const ext = path.extname(filePath).toLowerCase();
-    const isHtml = ext === '.html';
+    // HTML, JS и CSS не кэшируем — чтобы после деплоя браузер сразу брал свежие версии
+    // и не смешивал новый index.html со старыми скриптами/стилями.
+    // Шрифты и изображения (редко меняются) кэшируем надолго.
+    const noCache = (ext === '.html' || ext === '.js' || ext === '.css');
     res.writeHead(status || 200, {
       'Content-Type': MIME[ext] || 'application/octet-stream',
-      // HTML не кэшируем агрессивно, чтобы правки цен/текстов подхватывались быстро.
-      'Cache-Control': isHtml ? 'no-cache' : 'public, max-age=3600'
+      'Cache-Control': noCache ? 'no-cache, must-revalidate' : 'public, max-age=604800'
     });
     res.end(data);
   });
