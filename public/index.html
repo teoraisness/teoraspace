@@ -56,6 +56,7 @@
 
     <!-- 1. Первый экран -->
     <section class="hero" id="hero">
+      <div class="hero__stage">
       <img class="hero__img" src="/hero-bg.jpg" alt="Космический пейзаж: планета, луч света с пятью точками, горы и отражение в воде" />
       <canvas class="stars" id="stars" aria-hidden="true"></canvas>
       <div class="hero__scrim"></div>
@@ -67,6 +68,7 @@
         <a class="mark" style="top:41.26%;--mc:var(--l3);" href="#level-proyavlenie" data-cta="hero-level-proyavlenie"><span class="mark__name">Проявление</span></a>
         <a class="mark" style="top:50.37%;--mc:var(--l4);" href="#level-ya-i-drugoy" data-cta="hero-level-ya-i-drugoy"><span class="mark__name">Я и Другой</span></a>
         <a class="mark" style="top:59.52%;--mc:var(--l5);" href="#cocreation" data-cta="hero-level-cocreation"><span class="mark__name">Сотворчество</span></a>
+      </div>
       </div>
 
       <div class="hero__copy">
@@ -89,8 +91,10 @@
       </div>
 
       <div class="map">
-        <div class="map__rings" id="rings" role="group" aria-label="Кольца уровней">
-          <div class="map__center">Я</div>
+        <div class="map__ringswrap">
+          <div class="map__rings" id="rings" role="group" aria-label="Кольца уровней">
+            <div class="map__center">Я</div>
+          </div>
         </div>
         <div class="map__legend" id="mapLegend"></div>
       </div>

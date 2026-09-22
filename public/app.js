@@ -530,7 +530,7 @@ function initYear() {
 
 // ---- Живой слой звёзд поверх изображения героя ----
 function initStars() {
-  var hero = document.querySelector('.hero');
+  var hero = document.querySelector('.hero__stage') || document.querySelector('.hero');
   var cv = document.getElementById('stars');
   if (!hero || !cv) return;
   var ctx = cv.getContext('2d');

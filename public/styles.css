@@ -157,20 +157,23 @@ section { padding: 72px 16px; max-width: var(--maxw); margin: 0 auto; }
   background: #05040a;
   overflow: hidden;
 }
+.hero__stage { position: relative; width: 100%; }
 .hero__img { display: block; width: 100%; height: auto; }
 .stars { position: absolute; inset: 0; z-index: 1; pointer-events: none; mix-blend-mode: screen; }
 .hero__scrim {
   position: absolute; inset: 0; pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(5,4,10,.5) 0%, rgba(5,4,10,0) 22%, rgba(5,4,10,0) 58%, rgba(16,11,22,.5) 84%, var(--bg) 100%),
+    linear-gradient(rgba(6,4,12,.36), rgba(6,4,12,.36)),
+    linear-gradient(180deg, rgba(5,4,10,.5) 0%, rgba(5,4,10,0) 24%, rgba(5,4,10,0) 56%, rgba(16,11,22,.55) 84%, var(--bg) 100%),
     radial-gradient(120% 80% at 20% 90%, rgba(5,4,10,.72), transparent 60%);
 }
 
 /* Названия уровней — кликабельные якоря справа от точек */
-.marks { position: absolute; inset: 0; z-index: 3; }
+.marks { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
 .mark {
   position: absolute; left: 66.4%; transform: translateY(-50%);
   display: inline-block; text-decoration: none; cursor: pointer; border-radius: 6px;
+  pointer-events: auto;
 }
 .mark__name {
   font-family: var(--font-sans); font-weight: 300;
@@ -184,7 +187,7 @@ section { padding: 72px 16px; max-width: var(--maxw); margin: 0 auto; }
 
 /* Текстовый блок героя */
 .hero__copy {
-  position: absolute; left: 0; bottom: clamp(72px, 20%, 300px); z-index: 4;
+  position: absolute; left: 0; bottom: clamp(120px, 30%, 460px); z-index: 4;
   padding: clamp(20px,4vw,60px) clamp(16px,4vw,56px) 0;
   max-width: min(620px, 88%); display: flex; flex-direction: column; gap: clamp(12px,1.7vw,18px);
 }
@@ -210,12 +213,14 @@ section { padding: 72px 16px; max-width: var(--maxw); margin: 0 auto; }
 .map-section { padding-top: 40px; }
 .map { display: flex; flex-direction: column; align-items: center; gap: 36px; }
 
+.map__ringswrap { position: relative; width: 460px; height: 460px; max-width: 100%; }
 .map__rings {
   position: relative;
-  width: min(88vw, 460px);
-  aspect-ratio: 1;
+  width: 460px;
+  height: 460px;
   display: grid;
   place-items: center;
+  transform-origin: top left;
 }
 .map__ring {
   position: absolute;
@@ -641,4 +646,18 @@ section { padding: 72px 16px; max-width: var(--maxw); margin: 0 auto; }
     left: auto; right: 20px; bottom: 20px;
     max-width: 420px;
   }
+}
+
+/* Масштабируем кольца карты под узкие экраны, чтобы они не вылезали и оставались по центру */
+@media (max-width: 520px) {
+  .map__ringswrap { width: 359px; height: 359px; }
+  .map__rings { transform: scale(0.78); }
+}
+@media (max-width: 410px) {
+  .map__ringswrap { width: 313px; height: 313px; }
+  .map__rings { transform: scale(0.68); }
+}
+@media (max-width: 350px) {
+  .map__ringswrap { width: 267px; height: 267px; }
+  .map__rings { transform: scale(0.58); }
 }
