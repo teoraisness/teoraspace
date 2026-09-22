@@ -166,15 +166,6 @@ section { padding: 72px 16px; max-width: var(--maxw); margin: 0 auto; }
     radial-gradient(120% 80% at 20% 90%, rgba(5,4,10,.72), transparent 60%);
 }
 
-/* Цветные огоньки на точках луча */
-.beamdots { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-.beamdot {
-  position: absolute; left: 64.97%; transform: translate(-50%,-50%);
-  width: clamp(16px, 1.7vw, 26px); aspect-ratio: 1; border-radius: 50%;
-  background: radial-gradient(circle at 50% 45%, #fff6ee 0%, var(--dc) 46%, var(--dc) 56%, transparent 74%);
-  box-shadow: 0 0 14px 3px var(--dc), 0 0 30px 10px color-mix(in srgb, var(--dc) 45%, transparent);
-}
-
 /* Названия уровней — кликабельные якоря справа от точек */
 .marks { position: absolute; inset: 0; z-index: 3; }
 .mark {
@@ -193,25 +184,25 @@ section { padding: 72px 16px; max-width: var(--maxw); margin: 0 auto; }
 
 /* Текстовый блок героя */
 .hero__copy {
-  position: absolute; left: 0; bottom: 0; z-index: 4;
-  padding: clamp(20px,4vw,60px) clamp(16px,4vw,56px) clamp(28px,5vw,66px);
+  position: absolute; left: 0; bottom: clamp(72px, 20%, 300px); z-index: 4;
+  padding: clamp(20px,4vw,60px) clamp(16px,4vw,56px) 0;
   max-width: min(620px, 88%); display: flex; flex-direction: column; gap: clamp(12px,1.7vw,18px);
 }
 .hero__eyebrow {
   text-transform: uppercase; letter-spacing: 5px; font-size: clamp(11px,1.3vw,14px);
-  font-weight: 600; color: var(--l1);
+  font-weight: 600; color: var(--l1); text-shadow: 0 2px 14px rgba(0,0,0,.6);
 }
 .hero__title {
   font-size: clamp(40px, 7vw, 78px); line-height: 1.0;
   background: var(--spectrum); -webkit-background-clip: text; background-clip: text;
   color: transparent; text-wrap: balance;
 }
-.hero__subtitle { font-size: clamp(16px, 2.1vw, 21px); color: var(--muted); line-height: 1.5; max-width: 560px; }
+.hero__subtitle { font-size: clamp(16px, 2.1vw, 21px); color: var(--muted); line-height: 1.5; max-width: 560px; text-shadow: 0 2px 16px rgba(0,0,0,.55); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
 
 /* Мобильная раскладка героя: подписи убираем, текст под изображением */
 @media (max-width: 620px) {
-  .hero__copy { position: static; max-width: 100%; background: var(--bg); }
+  .hero__copy { position: static; max-width: 100%; background: var(--bg); bottom: auto; padding-bottom: clamp(24px,6vw,40px); }
   .mark { display: none; }
 }
 

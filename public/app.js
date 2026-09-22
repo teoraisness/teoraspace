@@ -539,7 +539,7 @@ function initStars() {
   var W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2),stars=[];
   var palette=['255,255,255','255,255,255','255,255,255','255,242,230','221,198,236'];
   function build(){
-    var count=Math.round(Math.min(190,Math.max(70,(W*H)/9000)));
+    var count=Math.round(Math.min(360,Math.max(130,(W*H)/5200)));
     stars=[];
     for(var i=0;i<count;i++){
       var y=Math.pow(Math.random(),1.7)*0.82;
@@ -561,15 +561,15 @@ function initStars() {
   function frame(now){
     var t=(now-t0)/1000;
     mx+=(tx-mx)*0.05;my+=(ty-my)*0.05;
-    var amp=14,driftx=Math.sin(t*0.06)*4,drifty=Math.cos(t*0.045)*3;
+    var amp=28,driftx=Math.sin(t*0.06)*5,drifty=Math.cos(t*0.045)*4;
     ctx.clearRect(0,0,W,H);
     for(var i=0;i<stars.length;i++){
       var s=stars[i];
       var ox=(-mx*amp+driftx)*s.depth,oy=(-my*amp+drifty)*s.depth;
       var sx=s.x*W+ox,sy=s.y*H+oy;
       var a=s.base*(0.55+0.45*Math.sin(t*s.tw+s.ph)),rr=s.r;
-      if(mInside){var dx=sx-mpx,dy=sy-mpy,d2=dx*dx+dy*dy,R=120;
-        if(d2<R*R){var k=1-Math.sqrt(d2)/R;a=Math.min(1,a+k*0.5);rr=s.r*(1+k*0.8);}}
+      if(mInside){var dx=sx-mpx,dy=sy-mpy,d2=dx*dx+dy*dy,R=200;
+        if(d2<R*R){var k=1-Math.sqrt(d2)/R;a=Math.min(1,a+k*0.95);rr=s.r*(1+k*1.6);}}
       var g=ctx.createRadialGradient(sx,sy,0,sx,sy,rr*3.2);
       g.addColorStop(0,'rgba('+s.col+','+a+')');g.addColorStop(1,'rgba('+s.col+',0)');
       ctx.fillStyle=g;ctx.beginPath();ctx.arc(sx,sy,rr*3.2,0,6.283);ctx.fill();
