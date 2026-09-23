@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переход к оплате...</title>
+    <script>
+        window.onload = function() {
+            var mightyPlanUrl = "https://teora.mn.co/plans/2001010?bundle_token=1e16ba670d3a5d3f467b71c9955d8b84&utm_source=manual";
+
+            var win = window.open(mightyPlanUrl, '_system');
+
+            if (!win) {
+                window.location.href = mightyPlanUrl;
+            }
+        };
+    </script>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f9f9f9; }
+        .loader-box { text-align: center; color: #333; }
+        a { color: #0066cc; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="loader-box">
+        <h2>Перенаправляем на безопасную страницу оплаты...</h2>
+        <p>Если страница не открылась автоматически, <a href="https://teora.mn.co/plans/2001010?bundle_token=1e16ba670d3a5d3f467b71c9955d8b84&utm_source=manual">нажмите здесь</a>.</p>
+    </div>
+</body>
+</html>
