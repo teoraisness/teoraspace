@@ -35,7 +35,7 @@ const LEVELS = [
       'Новостной канал Сообщества'
     ],
     cta: 'Начать знакомство',
-    link: '#join'
+    link: 'https://teora.mn.co'
   },
   {
     id: 'prisutstvie',
@@ -58,7 +58,7 @@ const LEVELS = [
       'Онлайн-пространство для работы в сессиях коммуникации'
     ],
     cta: 'Выбрать Присутствие',
-    link: '#join'
+    link: 'https://pay.teora.live/prisutstvie/'
   },
   {
     id: 'proyavlenie',
@@ -85,7 +85,7 @@ const LEVELS = [
     ],
     personalSpace: true,
     cta: 'Перейти к Проявлению',
-    link: '#join'
+    link: 'https://pay.teora.live/proyavlenie/'
   },
   {
     id: 'ya-i-drugoy',
@@ -111,7 +111,7 @@ const LEVELS = [
       'Участие в мероприятиях Сообщества'
     ],
     cta: 'Исследовать уровень',
-    link: '#join'
+    link: 'https://pay.teora.live/ya-i-drugoy/'
   }
 ];
 
@@ -179,6 +179,8 @@ const COMPARE_ROWS = [
    ========================================================= */
 
 const $ = (sel, root = document) => root.querySelector(sel);
+// Внешние ссылки (Mighty и т.п.) открываем в новой вкладке, якоря — в этой же.
+const linkAttrs = (link) => /^https?:\/\//.test(link) ? ' target="_blank" rel="noopener"' : '';
 const el = (tag, cls, html) => {
   const node = document.createElement(tag);
   if (cls) node.className = cls;
@@ -364,7 +366,7 @@ function renderLevels() {
       '<p class="level-card__desc">' + lvl.desc + '</p>' +
       (lvl.personalSpace ? personalSpaceMarkup() : '') +
       '<ul class="level-card__list">' + features + '</ul>' +
-      '<a href="' + lvl.link + '" class="btn btn--primary" data-cta="level-' + lvl.id + '">' + lvl.cta + '</a>';
+      '<a href="' + lvl.link + '"' + linkAttrs(lvl.link) + ' class="btn btn--primary" data-cta="level-' + lvl.id + '">' + lvl.cta + '</a>';
 
     wrap.appendChild(card);
   });
@@ -429,7 +431,7 @@ function renderPricing() {
       '<p class="price-card__phrase">' + lvl.phrase + '</p>' +
       priceBlock +
       '<ul class="price-card__list">' + features + '</ul>' +
-      '<a href="' + lvl.link + '" class="btn btn--primary" data-cta="pricing-' + lvl.id + '">' + lvl.cta + '</a>';
+      '<a href="' + lvl.link + '"' + linkAttrs(lvl.link) + ' class="btn btn--primary" data-cta="pricing-' + lvl.id + '">' + lvl.cta + '</a>';
     grid.appendChild(card);
   });
 }

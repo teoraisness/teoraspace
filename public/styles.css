@@ -608,6 +608,7 @@ section { padding: 72px 16px; max-width: var(--maxw); margin: 0 auto; }
   backdrop-filter: blur(10px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
+.cookie[hidden] { display: none; }
 .cookie p { font-size: 14px; color: var(--muted); }
 .cookie a { color: var(--l3); text-decoration: underline; }
 .cookie__actions { display: flex; gap: 10px; justify-content: flex-end; }
