@@ -44,6 +44,9 @@ const LEVELS = [
     price: '30 €',
     priceShort: '30 €',
     per: '/ месяц',
+    priceYear: '300 €',
+    priceYearOld: '360 €',
+    yearNote: '2 месяца в подарок',
     color: 'var(--l2)',
     phrase: 'Я участвую.',
     idea: 'Я становлюсь частью пространства.',
@@ -67,6 +70,9 @@ const LEVELS = [
     price: '70 €',
     priceShort: '70 €',
     per: '/ месяц',
+    priceYear: '700 €',
+    priceYearOld: '840 €',
+    yearNote: '2 месяца в подарок',
     color: 'var(--l3)',
     phrase: 'Я становлюсь видимым.',
     idea: 'Я позволяю себе быть увиденным.',
@@ -95,6 +101,9 @@ const LEVELS = [
     price: '150 €',
     priceShort: '150 €',
     per: '/ месяц',
+    priceYear: '1500 €',
+    priceYearOld: '1800 €',
+    yearNote: '2 месяца в подарок',
     color: 'var(--l4)',
     phrase: 'Я встречаю.',
     idea: 'Я встречаю Другого.',
@@ -183,6 +192,18 @@ const COMPARE_ROWS = [
 const $ = (sel, root = document) => root.querySelector(sel);
 // Внешние ссылки (Mighty и т.п.) открываем в новой вкладке, якоря — в этой же.
 const linkAttrs = (link) => /^https?:\/\//.test(link) ? ' target="_blank" rel="noopener"' : '';
+
+// Годовая цена со скидкой — вторая строка под месячной ценой.
+// Стили инлайновые, чтобы правки жили в одном файле (app.js).
+const annualLine = (lvl) => {
+  if (!lvl.priceYear) return '';
+  return '<div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.09)">' +
+    '<span style="font-size:17px;font-weight:500;color:var(--text)">или ' + lvl.priceYear +
+      ' <span style="font-size:13px;font-weight:400;color:var(--muted-2)">/ год</span></span>' +
+    (lvl.yearNote ? ' <span style="display:inline-block;font-size:12px;color:var(--l1);background:rgba(242,185,140,.12);border-radius:20px;padding:2px 10px;margin-left:6px;white-space:nowrap">' + lvl.yearNote + '</span>' : '') +
+    (lvl.priceYearOld ? '<div style="margin-top:5px;font-size:12.5px;color:var(--muted-2);text-decoration:line-through">' + lvl.priceYearOld + ' при помесячной оплате</div>' : '') +
+  '</div>';
+};
 const el = (tag, cls, html) => {
   const node = document.createElement(tag);
   if (cls) node.className = cls;
@@ -364,6 +385,7 @@ function renderLevels() {
         '<h3 class="level-card__name">' + lvl.name + '</h3>' +
         '<span class="level-card__price">' + price + '</span>' +
       '</div>' +
+      annualLine(lvl) +
       '<p class="level-card__idea">«' + lvl.idea + '»</p>' +
       '<p class="level-card__desc">' + lvl.desc + '</p>' +
       (lvl.personalSpace ? personalSpaceMarkup() : '') +
@@ -432,6 +454,7 @@ function renderPricing() {
       '<h3 class="price-card__name">' + lvl.name + '</h3>' +
       '<p class="price-card__phrase">' + lvl.phrase + '</p>' +
       priceBlock +
+      annualLine(lvl) +
       '<ul class="price-card__list">' + features + '</ul>' +
       '<a href="' + lvl.link + '"' + linkAttrs(lvl.link) + ' class="btn btn--primary" data-cta="pricing-' + lvl.id + '">' + lvl.cta + '</a>';
     grid.appendChild(card);
