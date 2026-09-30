@@ -338,7 +338,7 @@ section { padding: 72px 16px; max-width: var(--maxw); margin: 0 auto; }
 }
 .level-card__top { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
 .level-card__num { font-family: var(--font-serif); font-size: 30px; color: var(--lvl); }
-.level-card__name { font-size: clamp(28px, 7vw, 40px); }
+.level-card__name { font-size: clamp(28px, 7vw, 40px); color: var(--lvl); }
 .level-card__price {
   margin-left: auto;
   font-weight: 700;
@@ -519,7 +519,7 @@ section { padding: 72px 16px; max-width: var(--maxw); margin: 0 auto; }
     var(--bg-card);
   padding: 26px 22px;
 }
-.price-card__name { font-size: 26px; margin-bottom: 4px; }
+.price-card__name { font-size: 26px; margin-bottom: 4px; color: var(--lvl); }
 .price-card__phrase { font-family: var(--font-serif); font-style: italic; color: var(--muted); margin-bottom: 18px; }
 .price-card__price { font-size: 34px; font-weight: 700; color: var(--text); }
 .price-card__per { font-size: 15px; color: var(--muted-2); font-weight: 400; }
