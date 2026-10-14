@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Переход к оплате...</title>
     <script>
+        var mightyPlanUrl = "https://teora.mn.co/plans/2001031?bundle_token=be1dab25392e75e1cc8690b763cd9ae0&utm_source=manual";
+
+        // Промокод: pay.teora.live/<план>/?promo_code=КОД — передаём его в Mighty,
+        // чтобы скидка подставилась на странице оплаты. Без кода всё как раньше.
+        (function () {
+            var m = /[?&]promo_code=([^&#]+)/i.exec(window.location.search);
+            if (!m) return;
+            var code = decodeURIComponent(m[1]).trim().toUpperCase();
+            if (/^[A-Z0-9_-]{1,40}$/.test(code)) {
+                mightyPlanUrl += (mightyPlanUrl.indexOf('?') >= 0 ? '&' : '?') + 'promo_code=' + encodeURIComponent(code);
+            }
+        })();
+
         window.onload = function() {
-            var mightyPlanUrl = "https://teora.mn.co/plans/2001031?bundle_token=be1dab25392e75e1cc8690b763cd9ae0&utm_source=manual";
+            var link = document.querySelector('.loader-box a');
+            if (link) link.href = mightyPlanUrl;
 
             var win = window.open(mightyPlanUrl, '_system');
 
