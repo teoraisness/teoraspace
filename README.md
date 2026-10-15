@@ -60,5 +60,5 @@ Node ≥ 18. Установка зависимостей не требуется
 
 - [ ] Заполнить `impressum.html` и `datenschutz.html` реальными данными.
 - [ ] Подставить ссылки оплаты/регистрации в `LEVELS[].link`.
-- [ ] Проверить `og:url` / `canonical` в `index.html` (сейчас `teora.community`).
+- [ ] Проверить `og:url` / `canonical` в `index.html` (сейчас `teora.live`).
 - [ ] При необходимости — свой домен в Railway.
